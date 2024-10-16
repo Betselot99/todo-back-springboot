@@ -15,6 +15,6 @@ jobs:
       - name: login to Docker
         run: docker login -u $Username -p $Password
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag todo-back-springboot:$(date +%s)
+        run: docker build . --file Dockerfile --tag todo-back-springboot
       - name: Push image to Registry
-        run: docker push betselot456/todo-back-springboot:$(date +%s)
+        run: docker push betselot456/todo-back-springboot
