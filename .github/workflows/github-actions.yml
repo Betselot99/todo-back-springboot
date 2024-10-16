@@ -1,0 +1,20 @@
+name: Todo backend pipeline
+on:
+  push:
+    branches:
+      - feature
+
+jobs:
+  build:
+    env:
+      Username: betselot456
+      Password: aftershock
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: login to Docker
+        run: docker login -u $Username -p $Password
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag todo-back-springboot:$(date +%s)
+      - name: Push image to Registry
+        run: docker push betselot456/todo-back-springboot:$(date +%s)
